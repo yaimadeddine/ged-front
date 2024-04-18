@@ -1,0 +1,38 @@
+/* document-list.component.css */
+.document-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.document-card {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.document-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.document-header i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.document-body {
+  margin-bottom: 10px;
+}
+
+.document-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-button {
+  margin-top: 10px;
+}

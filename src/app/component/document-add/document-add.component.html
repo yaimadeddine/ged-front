@@ -1,0 +1,29 @@
+<!-- document-upload.component.html -->
+<button pButton type="button" label="Create Document" (click)="showMetadataDialog()"></button>
+
+<p-dialog header="Create a new document" [(visible)]="metadataDialogVisible" [style]="{ 'width': '50vw' }">
+  <form (ngSubmit)="submitForm()" #metadataForm="ngForm">
+    <div class="p-fluid">
+
+      <div class="p-field">
+        <p-fileUpload mode="basic" chooseLabel="Choose" name="demo[]"
+                      url="https://www.primefaces.org/cdn/api/upload.php"
+                      (onSelect)="onUpload($event)"></p-fileUpload>
+      </div>
+      <!-- Add additional metadata fields as needed -->
+      <div class="p-field" *ngFor="let meta of metadata; let i = index">
+        <label for="key{{i}}">Key</label>
+        <input pInputText id="key{{i}}" [(ngModel)]="meta.key" name="key{{i}}"/>
+
+        <label for="value{{i}}">Value</label>
+        <input pInputText id="value{{i}}" [(ngModel)]="meta.value" name="value{{i}}"/>
+      </div>
+      <div class="p-field">
+      <button pButton type="button" label="Add Metadata" (click)="addMetadata()"></button>
+      </div>
+      <div class="p-field">
+        <button pButton type="submit" label="Save"></button>
+      </div>
+    </div>
+  </form>
+</p-dialog>

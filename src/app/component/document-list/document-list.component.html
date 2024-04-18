@@ -1,0 +1,15 @@
+<div class="document-list">
+  <div class="document-card" *ngFor="let document of documents">
+    <div class="document-header">
+      <i [ngClass]="getIconClass(document.type)"></i>
+      <span>{{ document.name }}</span>
+    </div>
+    <div class="document-body">
+      <span>Size: {{ document.size }}</span>
+    </div>
+    <div class="document-footer">
+      <button pButton type="button" icon="pi pi-download" (click)="downloadDocument(document)" class="action-button"></button>
+      <button pButton type="button" icon="pi pi-trash" (click)="deleteDocument(document)" class="action-button"></button>
+    </div>
+  </div>
+</div>
