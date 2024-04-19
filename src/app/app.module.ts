@@ -17,6 +17,9 @@ import {CalendarModule} from "primeng/calendar";
 import { DocumentListV2Component } from './component/document-list-v2/document-list-v2.component';
 import {TableModule} from "primeng/table";
 import { BytesToMegabytesPipe } from './pipe/bytes-to-megabytes.pipe';
+import { LoginComponent } from './component/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { BytesToMegabytesPipe } from './pipe/bytes-to-megabytes.pipe';
     DocumentListComponent,
     DocumentAddComponent,
     DocumentListV2Component,
-    BytesToMegabytesPipe
+    BytesToMegabytesPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import { BytesToMegabytesPipe } from './pipe/bytes-to-megabytes.pipe';
     FormsModule,
     InputTextModule,
     CalendarModule,
-    TableModule
+    TableModule,
+    HttpClientModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

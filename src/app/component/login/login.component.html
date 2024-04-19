@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="box" *ngIf="isLoginMode; else signUpForm">
+      <h2>Login</h2>
+      <div class="input-group">
+        <label>Username</label>
+        <input pInputText [(ngModel)]="username" type="text" />
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input pInputText [(ngModel)]="password" type="password" />
+      </div>
+      <p-button class="button" label="Login" icon="pi pi-user" (click)="login()"></p-button>
+      <p-button class="button" label="Switch to Sign Up" icon="pi pi-user-plus" (click)="switchMode()"></p-button>
+    </div>
+  
+    <ng-template #signUpForm>
+      <div class="box">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+          <label>Username</label>
+          <input pInputText [(ngModel)]="username" type="text" />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input pInputText [(ngModel)]="password" type="password" />
+        </div>
+        <p-button class="button" label="Sign Up" icon="pi pi-user-plus" (click)="signUp()"></p-button>
+        <p-button class="button" label="Switch to Login" icon="pi pi-user" (click)="switchMode()"></p-button>
+      </div>
+    </ng-template>
+  </div>
