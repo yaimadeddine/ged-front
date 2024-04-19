@@ -17,14 +17,17 @@ export class DocumentService {
   findAll(): Observable<Document[]> {
     return this.httpClient.get<Document[]>(this.url + "/files");
   }
+  findByUserId(id:number): Observable<Document[]> {
+    return this.httpClient.get<Document[]>(`${this.url}/files/user/${id}`);
+}
 
 
-  createDocument(file: File, metadata: any[]): Observable<Document> {
+  createDocument(file: File, metadata: any[],id:number): Observable<Document> {
     const formData: FormData = new FormData();
     formData.append('file', file);
     formData.append('metadata', JSON.stringify(metadata));
 
-    return this.httpClient.put<Document>(`${this.url}/files/create`, formData);
+    return this.httpClient.put<Document>(`${this.url}/files/create/${id}`, formData);
   }
   uploadFile(fileToUpload: File): Observable<any> {
     const formData: FormData = new FormData();

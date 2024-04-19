@@ -37,11 +37,10 @@ export class DocumentAddComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log('Metadata:', this.metadata);
-    console.log('Uploaded file:', this.uploadedFile);
-    this.documentService.createDocument(this.uploadedFile, this.metadata).subscribe(
+    const userId = localStorage.getItem('userId');
+    const userIdNumber = userId ? parseInt(userId) : 0;
+    this.documentService.createDocument(this.uploadedFile, this.metadata,userIdNumber).subscribe(
       (document) => {
-        console.log('Document created:', document);
         this.hideMetadataDialog();
       },
       (error) => {
