@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {EMPTY, Observable} from "rxjs";
 import {Document} from "../model/document.model";
 import {NgForm} from "@angular/forms";
+import {Documentcriteria} from "../model/documentcriteria";
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,10 @@ export class DocumentService {
       responseType: 'text'
     });
 
+  }
+  searchDocuments(documentCriteria: Documentcriteria): Observable<Document[]> {
+    let url = `${this.url}/files/search`;
+    return this.httpClient.post<Document[]>(url, documentCriteria);
   }
 
 

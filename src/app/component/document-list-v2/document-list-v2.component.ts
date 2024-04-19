@@ -3,14 +3,8 @@ import {SortEvent} from "primeng/api";
 import {Document} from "../../model/document.model";
 import {DocumentService} from "../../service/document.service";
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import {Documentcriteria} from "../../model/documentcriteria";
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  category: string;
-  quantity: number;
-}
 @Component({
   selector: 'app-document-list-v2',
   templateUrl: './document-list-v2.component.html',
@@ -19,13 +13,15 @@ interface Product {
 export class DocumentListV2Component implements OnInit {
   documents: Document[] = [];
 
+  documentCriteria:Documentcriteria = new Documentcriteria();
+
   constructor(private documentService: DocumentService,private http: HttpClient) {}
 
   ngOnInit() {
     this.findAll();
   }
 
- 
+
   download(documentId: number, documentName: string): void {
     const url = `http://localhost:8070/files/download/${documentId}`;
     this.http.get(url, { responseType: 'blob' })
@@ -55,6 +51,13 @@ export class DocumentListV2Component implements OnInit {
 
   findAll() {
     this.documentService.findAll().subscribe((data) => {
+      this.documents = data;
+    });
+  }
+
+  searchDocuments() {
+
+    this.documentService.searchDocuments(this.documentCriteria).subscribe((data) => {
       this.documents = data;
     });
   }

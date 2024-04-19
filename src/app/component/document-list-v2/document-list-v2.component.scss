@@ -1,17 +1,38 @@
-.btn-mg{
-    margin: 3px;
+.btn-mg {
+  margin: 3px;
 }
+
 .section-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-button {
+  margin-bottom: 20px;
+}
+
+.card-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .row {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    input {
+      margin-right: 10px;
+    }
   }
-  
-  .add-button {
-    margin-bottom: 20px;
+
+  button {
+    margin-top: 10px;
   }
-  
-  .card-container {
-    width: 80%;
-    margin: 0 auto; 
-  }
+}
