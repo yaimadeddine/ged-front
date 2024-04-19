@@ -5,4 +5,5 @@ export class Documentcriteria {
     creationDateFrom!: string;
     creationDateTo!: string;
     type!: string;
+    idUser!: number;
 }
