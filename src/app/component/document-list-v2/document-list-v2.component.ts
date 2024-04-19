@@ -22,7 +22,9 @@ export class DocumentListV2Component implements OnInit {
   constructor(private documentService: DocumentService,private http: HttpClient) {}
 
   ngOnInit() {
-    this.findAll();
+    const userId = localStorage.getItem('userId');
+    const userIdNumber = userId ? parseInt(userId) : 0;
+    this.findByUserId(userIdNumber);  
   }
 
  
@@ -55,6 +57,11 @@ export class DocumentListV2Component implements OnInit {
 
   findAll() {
     this.documentService.findAll().subscribe((data) => {
+      this.documents = data;
+    });
+  }
+  findByUserId(id:number) {
+    this.documentService.findByUserId(id).subscribe((data) => {
       this.documents = data;
     });
   }
