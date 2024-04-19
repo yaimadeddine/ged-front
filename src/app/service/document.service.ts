@@ -42,7 +42,16 @@ export class DocumentService {
   }
   searchDocuments(documentCriteria: Documentcriteria): Observable<Document[]> {
     let url = `${this.url}/files/search`;
-    return this.httpClient.post<Document[]>(url, documentCriteria);
+  
+    let requestObject: any = {
+      name: documentCriteria.name,
+    };
+  
+    if (documentCriteria.type) {
+      requestObject.type = documentCriteria.type;
+    }
+  
+    return this.httpClient.post<Document[]>(url, requestObject);
   }
 
   deleteDocument(idDocument: number,idUser:number): Observable<void> {
