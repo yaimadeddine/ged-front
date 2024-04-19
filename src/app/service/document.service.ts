@@ -45,5 +45,10 @@ export class DocumentService {
     return this.httpClient.post<Document[]>(url, documentCriteria);
   }
 
+  deleteDocument(idDocument: number,idUser:number): Observable<void> {
+    let url = `${this.url}/files/${idDocument}/${idUser}`;
+    return this.httpClient.delete<void>(url);
+  }
+
 
 }

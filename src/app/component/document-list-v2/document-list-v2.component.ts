@@ -39,8 +39,13 @@ export class DocumentListV2Component implements OnInit {
         window.URL.revokeObjectURL(url);
       });
   }
-  delete(document: any) {
-    console.log('Deleting document:', document);
+  delete(idDocument: number) {
+    const userId = localStorage.getItem('userId');
+    const userIdNumber = userId ? parseInt(userId) : 0;
+    this.documentService.deleteDocument(idDocument,userIdNumber).subscribe((data) => {
+      this.findByUserId(userIdNumber);
+    });
+
   }
 
   share(document: any) {
